@@ -15,7 +15,18 @@ def suma_cubo_pares_for(numeros: Iterable[int]) -> int:
         - https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions # noqa: E501
         - https://docs.python.org/3/library/functions.html#sum
     """
+    suma = 0
 
+    numeros_al_cubo = []
+
+    for x in numeros:
+        numeros_al_cubo.append(x**3)
+    
+    for x in numeros_al_cubo:
+        if x%2 == 0:
+            suma = suma + x
+    
+    return suma
 
 # NO MODIFICAR - INICIO
 assert suma_cubo_pares_for([1, 2, 3, 4, 5, 6]) == 288
@@ -34,6 +45,7 @@ def suma_cubo_pares_sum_list(numeros: Iterable[int]) -> int:
         - https://docs.python.org/3/library/functions.html#sum
     """
 
+    return sum([x**3 for x in numeros if x%2==0])
 
 # NO MODIFICAR - INICIO
 assert suma_cubo_pares_sum_list([1, 2, 3, 4, 5, 6]) == 288
@@ -52,7 +64,7 @@ Escribir una función lambda que eleve los elementos al cubo
 Restricción: Utilizar List, map y lambda y la variable numeros
 """
 
-numeros_al_cubo =  # Completar
+numeros_al_cubo =  list(map(lambda x: x**3, numeros))
 
 """
 Escribir una función lambda que permita filtrar todos los elementos pares
@@ -60,7 +72,7 @@ Escribir una función lambda que permita filtrar todos los elementos pares
 Restricción: Utilizar List, filter, lambda y la variable numeros_al_cubo
 """
 
-numeros_al_cubo_pares =  # Completar
+numeros_al_cubo_pares =  list(filter(lambda x: x%2 ==0, numeros_al_cubo))
 
 
 """
@@ -69,9 +81,9 @@ Escribir una función Lambda que sume todos los elementos
 Restricción: Utilizar reduce, lambda y la variable numeros_al_cubo_pares
 """
 
-from functools import reduce  # noqa: E402
+from functools import reduce  
 
-suma_numeros_al_cubo_pares =  # Completar
+suma_numeros_al_cubo_pares =  reduce(lambda x,y: x+y, numeros_al_cubo_pares)
 
 
 # NO MODIFICAR - INICIO
